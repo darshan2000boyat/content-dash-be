@@ -16,31 +16,36 @@
   },
   "attributes": {
     "PageTitle": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "PageURL": {
+      "type": "uid",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "uid",
       "targetField": "PageTitle"
     },
     "SEO": {
       "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "global.seo"
+      "component": "global.seo",
+      "repeatable": false
+    },
+    "ParentPage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sitemap.sitemap"
     }
   }
 }

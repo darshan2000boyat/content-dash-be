@@ -17,69 +17,73 @@
   },
   "attributes": {
     "PageTitle": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "PageURL": {
+      "type": "uid",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "uid",
       "targetField": "PageTitle"
     },
-    "ExcludeFromSitemap": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "boolean",
-      "default": false,
-      "private": true
-    },
-    "SEO": {
-      "displayName": "SEO",
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "global.seo"
-    },
-    "Blocks": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "dynamiczone",
-      "components": [
-        "blocks.two-column-content-block",
-        "blocks.full-width-image"
-      ]
+    "ParentPage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sitemap.sitemap"
     },
     "PageType": {
+      "type": "enumeration",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "enumeration",
+      "required": true,
+      "default": "default",
       "enum": [
         "default",
         "news-listing",
         "news-detail"
-      ],
-      "default": "default",
-      "required": true
+      ]
+    },
+    "ExcludeFromSitemap": {
+      "type": "boolean",
+      "private": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": false
+    },
+    "SEO": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "global.seo",
+      "repeatable": false
+    },
+    "Blocks": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "blocks.two-column-content-block",
+        "blocks.full-width-image"
+      ]
     }
   }
 }

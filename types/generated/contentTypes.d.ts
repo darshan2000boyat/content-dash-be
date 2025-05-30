@@ -34,6 +34,10 @@ export interface AdminApiToken extends Struct.CollectionTypeSchema {
         minLength: 1;
       }> &
       Schema.Attribute.DefaultTo<''>;
+    encryptedKey: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     expiresAt: Schema.Attribute.DateTime;
     lastUsedAt: Schema.Attribute.DateTime;
     lifespan: Schema.Attribute.BigInteger;
@@ -576,6 +580,7 @@ export interface ApiNewsItemNewsItem extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    ParentPage: Schema.Attribute.Relation<'oneToOne', 'api::sitemap.sitemap'>;
     publishedAt: Schema.Attribute.DateTime;
     SEO: Schema.Attribute.Component<'global.seo', false> &
       Schema.Attribute.SetPluginOptions<{
@@ -774,6 +779,7 @@ export interface ApiSitemapSitemap extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    ParentPage: Schema.Attribute.Relation<'oneToOne', 'api::sitemap.sitemap'>;
     publishedAt: Schema.Attribute.DateTime;
     SEO: Schema.Attribute.Component<'global.seo', false> &
       Schema.Attribute.SetPluginOptions<{
