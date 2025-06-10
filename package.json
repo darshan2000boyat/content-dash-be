@@ -11,18 +11,16 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@_sh/strapi-plugin-ckeditor": "^5.0.1",
-    "@strapi/design-system": "^1.19.0",
-    "@strapi/helper-plugin": "^4.25.12",
+    "@_sh/strapi-plugin-ckeditor": "^5.0.1",    
     "@strapi/plugin-cloud": "5.14.0",
     "@strapi/plugin-users-permissions": "5.14.0",
-    "@strapi/strapi": "5.14.0",
-    "better-sqlite3": "11.3.0",
+    "@strapi/strapi": "5.14.0",    
     "pg": "^8.13.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "ua-parser-js": "^2.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
