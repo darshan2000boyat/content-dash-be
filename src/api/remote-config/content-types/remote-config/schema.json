@@ -13,23 +13,21 @@
   "pluginOptions": {},
   "attributes": {
     "HeaderTrackingCodes": {
-      "type": "text",
-      "pluginOptions": {}
+      "type": "text"
     },
     "FooterTrackingCodes": {
-      "type": "text",
-      "pluginOptions": {}
+      "type": "text"
     },
     "Config": {
-      "displayName": "Config",
       "type": "component",
-      "repeatable": true,
       "component": "global.config",
-      "pluginOptions": {}
+      "repeatable": true
     },
     "GTMCode": {
-      "type": "string",
-      "pluginOptions": {}
+      "type": "string"
+    },
+    "RouteModels": {
+      "type": "json"
     }
   }
 }

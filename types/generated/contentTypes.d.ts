@@ -644,6 +644,7 @@ export interface ApiRemoteConfigRemoteConfig extends Struct.SingleTypeSchema {
     FooterTrackingCodes: Schema.Attribute.Text;
     GTMCode: Schema.Attribute.String;
     HeaderTrackingCodes: Schema.Attribute.Text;
+    RouteModels: Schema.Attribute.JSON;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
