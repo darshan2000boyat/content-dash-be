@@ -27,6 +27,7 @@
     "react-router-dom": "^6.0.0",
     "strapi-plugin-dashboard": "^1.0.2",
     "strapi-plugin-schema-visualizer": "^1.0.5",
+    "strapi-v5-search-multilingual": "^1.0.4",
     "styled-components": "^6.0.0",
     "ua-parser-js": "^2.0.1"
   },
