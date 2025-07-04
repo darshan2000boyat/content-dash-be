@@ -12,6 +12,8 @@
     },
     "Type": {
       "type": "enumeration",
+      "required": true,
+      "default": "text",
       "enum": [
         "text",
         "number",
@@ -24,26 +26,25 @@
         "hidden",
         "phone",
         "country"
-      ],
-      "default": "text",
-      "required": true
+      ]
     },
     "SubmissionKey": {
       "type": "string",
       "required": true,
       "unique": true
     },
+    "Placeholder": {
+      "type": "string"
+    },
     "Validations": {
-      "displayName": "Form Validations",
       "type": "component",
-      "repeatable": false,
-      "component": "global.form-validations"
+      "component": "global.form-validations",
+      "repeatable": false
     },
     "SelectOptions": {
-      "displayName": "Form Select Options",
       "type": "component",
-      "repeatable": true,
-      "component": "global.form-select-options"
+      "component": "global.form-select-options",
+      "repeatable": true
     },
     "Mandatory": {
       "type": "boolean",
