@@ -30,7 +30,8 @@
           "localized": true
         }
       },
-      "targetField": "PageTitle"
+      "targetField": "PageTitle",
+      "maxLength": 75
     },
     "SEO": {
       "type": "component",

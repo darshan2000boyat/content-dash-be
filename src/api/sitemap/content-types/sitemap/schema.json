@@ -31,7 +31,8 @@
           "localized": true
         }
       },
-      "targetField": "PageTitle"
+      "targetField": "PageTitle",
+      "maxLength": 75
     },
     "ParentPage": {
       "type": "relation",
