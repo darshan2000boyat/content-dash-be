@@ -7,10 +7,7 @@ const SENDGRID_EMAIL_PROVIDER = "sendgrid";
 export default ({ env }) => ({
   // ..other plugins
   upload: getUploadProviderConfig(env),
-  email: getEmailProviderConfig(env),
-  "strapi-plugin-cron": {
-    enabled: true,
-  },
+  email: getEmailProviderConfig(env),  
   "schema-visualizer": {
     enabled: true,
   },
