@@ -3,6 +3,7 @@ const AWS_S3_UPLOAD_PROVIDER = "aws-s3";
 const SENDMAIL_EMAIL_PROVIDER = "sendmail";
 const NODEMAILER_EMAIL_PROVIDER = "nodemailer";
 const SENDGRID_EMAIL_PROVIDER = "sendgrid";
+const CF_UPLOAD_PROVIDER = "cloudflare-r2";
 
 export default ({ env }) => ({
   // ..other plugins
@@ -67,19 +68,56 @@ const getAWSProviderOptions = (env) => ({
   },
 });
 
+const getCFProviderOptions = (env) => ({
+  accessKeyId: env("CF_ACCESS_KEY_ID"),
+  secretAccessKey: env("CF_ACCESS_SECRET"),
+  endpoint: env("CF_ENDPOINT"),
+  params: {
+    Bucket: env("CF_BUCKET"),
+  },
+  cloudflarePublicAccessUrl: env("CF_PUBLIC_ACCESS_URL"),
+  /**
+   * Sets if all assets should be uploaded in the root dir regardless the strapi folder.
+   * It is useful because strapi sets folder names with numbers, not by user's input folder name
+   * By default it is false
+   */
+  pool: false,
+});
+
 const getUploadProviderConfig = (env) => {
-  if (env("AWS_PROVIDER") === "true") {
-    return {
-      config: {
-        provider: AWS_S3_UPLOAD_PROVIDER,
-        providerOptions: getAWSProviderOptions(env),
-        actionOptions: {
-          upload: {},
-          uploadStream: {},
-          delete: {},
+  switch (env("UPLOAD_PROVIDER")) {
+    case AWS_S3_UPLOAD_PROVIDER:
+      return {
+        config: {
+          provider: AWS_S3_UPLOAD_PROVIDER,
+          providerOptions: getAWSProviderOptions(env),
+          actionOptions: {
+            upload: {},
+            uploadStream: {},
+            delete: {},
+          },
         },
-      },
-    };
+      };
+    case CF_UPLOAD_PROVIDER:
+      return {
+        config: {
+          breakpoints: {
+            large: 2500,
+            medium: 1920,
+            small: 1440,
+            xsmall: 991,
+          },
+          provider: CF_UPLOAD_PROVIDER,
+          providerOptions: getCFProviderOptions(env),
+          actionOptions: {
+            upload: {},
+            uploadStream: {},
+            delete: {},
+          },
+        },
+      };
+    default:
+      break;
   }
   return getBaseUploadConfig();
 };
