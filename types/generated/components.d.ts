@@ -1,444 +1,43 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface BlocksAboutBanner extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_about_banners';
+export interface BlocksGlobalArea extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_global_areas';
   info: {
-    displayName: 'About Banner';
-    icon: 'grid';
+    displayName: 'Global Area';
+    icon: 'cog';
   };
   attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    IsHomePage: Schema.Attribute.Boolean;
-    Poster: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Subtitle: Schema.Attribute.String;
-    Title: Schema.Attribute.Text;
-    VideoUrl: Schema.Attribute.String;
-  };
-}
-
-export interface BlocksClients extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_clients';
-  info: {
-    displayName: 'Clients';
-    icon: 'apps';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', true>;
-    Subtitle: Schema.Attribute.String;
-    Title: Schema.Attribute.Text;
-  };
-}
-
-export interface BlocksContactBanner extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_contact_banners';
-  info: {
-    displayName: 'Contact Banner';
-    icon: 'phone';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Email: Schema.Attribute.Email;
-    Media: Schema.Attribute.Component<'elements.image-video-item', false>;
-    PhoneNumber: Schema.Attribute.String;
-    SubTitle: Schema.Attribute.String;
-    Title: Schema.Attribute.String;
-  };
-}
-
-export interface BlocksContactFormBlock extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_contact_form_blocks';
-  info: {
-    displayName: 'Contact Form Block';
-    icon: 'envelop';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Form: Schema.Attribute.Relation<'oneToOne', 'api::form.form'>;
-    Title: Schema.Attribute.String;
-  };
-}
-
-export interface BlocksContentBlock extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_content_blocks';
-  info: {
-    displayName: 'Content Block';
-    icon: 'pencil';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Content: Schema.Attribute.RichText &
-      Schema.Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'defaultHtml';
-        }
-      >;
-    EnablePadding: Schema.Attribute.Boolean;
-  };
-}
-
-export interface BlocksDetailsContent extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_details_contents';
-  info: {
-    displayName: 'Details Content';
-    icon: 'file';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Description: Schema.Attribute.Text;
-    Items: Schema.Attribute.Component<'elements.details-content-group', true>;
-    Title: Schema.Attribute.Text;
-  };
-}
-
-export interface BlocksFullWidthImage extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_full_width_images';
-  info: {
-    displayName: 'Full Width Image';
-    icon: 'landscape';
-  };
-  attributes: {
-    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    VideoURL: Schema.Attribute.String;
-  };
-}
-
-export interface BlocksFullscreenAnimatedText extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_fullscreen_animated_texts';
-  info: {
-    displayName: 'Fullscreen Animated Text';
-    icon: 'play';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Items: Schema.Attribute.Component<
-      'elements.fullscreen-animated-text-item',
-      true
+    Common: Schema.Attribute.Component<'elements.common', false>;
+    Stacks: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::stacks-and-global-area.stacks-and-global-area'
     >;
-  };
-}
-
-export interface BlocksFullscreenStikySlider extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_fullscreen_stiky_sliders';
-  info: {
-    displayName: 'Fullscreen Sticky Slider';
-    icon: 'filter';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Items: Schema.Attribute.Component<
-      'elements.image-title-description-item',
-      true
-    >;
-  };
-}
-
-export interface BlocksGallery extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_galleries';
-  info: {
-    displayName: 'Gallery';
-    icon: 'landscape';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Items: Schema.Attribute.Component<'elements.image-video-item', true>;
-  };
-}
-
-export interface BlocksHorizontalStickyCards extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_horizontal_sticky_cards';
-  info: {
-    displayName: 'Horizontal Sticky Cards';
-    icon: 'filter';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Items: Schema.Attribute.Component<'elements.sticky-cards-item', true>;
-  };
-}
-
-export interface BlocksImageSlider extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_image_sliders';
-  info: {
-    displayName: 'Image Slider';
-    icon: 'landscape';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Description: Schema.Attribute.Text;
-    Items: Schema.Attribute.Component<'elements.image-video-item', true>;
-    Title: Schema.Attribute.Text;
-  };
-}
-
-export interface BlocksImageVideoTextFillOnScroll
-  extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_image_video_text_fill_on_scrolls';
-  info: {
-    displayName: 'Image-Video-Text Fill On Scroll';
-    icon: 'bulletList';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Items: Schema.Attribute.Component<'elements.image-video-item', true>;
-  };
-}
-
-export interface BlocksQuoteBlock extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_quote_blocks';
-  info: {
-    displayName: 'Quote Block';
-    icon: 'quote';
-  };
-  attributes: {
-    Author: Schema.Attribute.String;
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Quote: Schema.Attribute.Text;
-  };
-}
-
-export interface BlocksQuoteWithBackground extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_quote_with_backgrounds';
-  info: {
-    displayName: 'Quote With Background';
-    icon: 'quote';
-  };
-  attributes: {
-    Author: Schema.Attribute.String;
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Poster: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Subtitle: Schema.Attribute.String;
-    Text: Schema.Attribute.Text;
-    TextColor: Schema.Attribute.Enumeration<['white', 'black', 'orange']>;
-    VideoUrl: Schema.Attribute.String;
-  };
-}
-
-export interface BlocksRelatedInsights extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_related_insights';
-  info: {
-    displayName: 'Related Insights';
-    icon: 'bulletList';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    limit: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<3>;
-    Title: Schema.Attribute.String;
-  };
-}
-
-export interface BlocksSimpleImageGallery extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_simple_image_galleries';
-  info: {
-    displayName: 'Simple Image Gallery';
-    icon: 'picture';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Slides: Schema.Attribute.Component<'elements.image-video-item', true>;
-    Title: Schema.Attribute.String;
-  };
-}
-
-export interface BlocksStickyCards extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_sticky_cards';
-  info: {
-    displayName: 'Sticky Cards';
-    icon: 'filter';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Description: Schema.Attribute.Text;
-    Items: Schema.Attribute.Component<'elements.sticky-cards-item', true>;
-    Title: Schema.Attribute.String;
-  };
-}
-
-export interface BlocksTeamBlock extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_team_blocks';
-  info: {
-    displayName: 'Team Block';
-    icon: 'emotionHappy';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    TeamMemberOne: Schema.Attribute.Component<'elements.team-item', false>;
-    TeamMemberThree: Schema.Attribute.Component<'elements.team-item', false>;
-    TeamMemberTwo: Schema.Attribute.Component<'elements.team-item', false>;
-    Title: Schema.Attribute.String;
   };
 }
 
 export interface BlocksTestBlock extends Struct.ComponentSchema {
   collectionName: 'components_blocks_test_blocks';
   info: {
-    displayName: 'TestBlock';
-    icon: 'attachment';
+    displayName: 'Test Block';
+    icon: 'landscape';
   };
   attributes: {
+    Common: Schema.Attribute.Component<'elements.common', false>;
+    Media: Schema.Attribute.Component<'elements.image-video-item', false>;
     Title: Schema.Attribute.String;
   };
 }
 
-export interface BlocksTestimonials extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_testimonials';
+export interface ElementsCommon extends Struct.ComponentSchema {
+  collectionName: 'components_elements_commons';
   info: {
-    displayName: 'Testimonials';
-    icon: 'discuss';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Items: Schema.Attribute.Component<
-      'elements.image-title-description-item',
-      true
-    >;
-    ShowBlockNumber: Schema.Attribute.Boolean;
-    Title: Schema.Attribute.String;
-  };
-}
-
-export interface BlocksTextPlateWithBackground extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_text_plate_with_backgrounds';
-  info: {
-    displayName: 'Text Plate With Background';
-    icon: 'message';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Items: Schema.Attribute.Component<'elements.details-content-item', true>;
-    Position: Schema.Attribute.Enumeration<
-      ['TL', 'TC', 'TR', 'CL', 'CC', 'CR', 'BL', 'BC', 'BR']
-    >;
-  };
-}
-
-export interface BlocksThankYou extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_thank_yous';
-  info: {
-    displayName: 'Thank You';
-    icon: 'check';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    SubTitle: Schema.Attribute.Text;
-    Title: Schema.Attribute.String;
-  };
-}
-
-export interface BlocksTwoColumnContentBlock extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_two_column_content_blocks';
-  info: {
-    description: '';
-    displayName: 'Two Column Content Block';
-    icon: 'bulletList';
-  };
-  attributes: {
-    ContentLeft: Schema.Attribute.RichText &
-      Schema.Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'defaultHtml';
-        }
-      >;
-    ContentRight: Schema.Attribute.RichText &
-      Schema.Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'defaultHtml';
-        }
-      >;
-  };
-}
-
-export interface BlocksVideoPlayer extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_video_players';
-  info: {
-    displayName: 'Video Player';
-    icon: 'play';
-  };
-  attributes: {
-    Common: Schema.Attribute.Component<'global.common', false>;
-    Poster: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-    PreviewVideoUrl: Schema.Attribute.String;
-    Title: Schema.Attribute.String;
-    VideoUrl: Schema.Attribute.String;
-  };
-}
-
-export interface ElementsCookiesPolicy extends Struct.ComponentSchema {
-  collectionName: 'components_elements_cookies_policies';
-  info: {
-    displayName: 'Cookies Policy';
+    displayName: 'Common';
     icon: 'cog';
   };
   attributes: {
-    SubTitle: Schema.Attribute.Text;
-    Title: Schema.Attribute.String;
-  };
-}
-
-export interface ElementsDetailsContentGroup extends Struct.ComponentSchema {
-  collectionName: 'components_elements_details_content_groups';
-  info: {
-    displayName: 'Details Content Group';
-    icon: 'dashboard';
-  };
-  attributes: {
-    FullWidth: Schema.Attribute.Boolean;
-    Items: Schema.Attribute.Component<'elements.details-content-item', true>;
-    MobileInline: Schema.Attribute.Boolean;
-    Parallax: Schema.Attribute.Boolean;
-  };
-}
-
-export interface ElementsDetailsContentItem extends Struct.ComponentSchema {
-  collectionName: 'components_elements_details_content_items';
-  info: {
-    displayName: 'Details Content Item';
-    icon: 'bulletList';
-  };
-  attributes: {
-    CustomWidthPercentage: Schema.Attribute.Integer;
-    Description: Schema.Attribute.Text;
-    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Subtitle: Schema.Attribute.String;
-    Title: Schema.Attribute.String;
-    VideoUrl: Schema.Attribute.String;
-  };
-}
-
-export interface ElementsFullscreenAnimatedTextItem
-  extends Struct.ComponentSchema {
-  collectionName: 'components_elements_fullscreen_animated_text_items';
-  info: {
-    displayName: 'Fullscreen Animated Text Item';
-    icon: 'bulletList';
-  };
-  attributes: {
-    Poster: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Subtitle: Schema.Attribute.String;
-    Text: Schema.Attribute.Text;
-    VideoUrl: Schema.Attribute.String;
-  };
-}
-
-export interface ElementsImageTitleDescriptionItem
-  extends Struct.ComponentSchema {
-  collectionName: 'components_elements_image_title_description_items';
-  info: {
-    displayName: 'Image Title Description Item';
-    icon: 'bulletList';
-  };
-  attributes: {
-    Description: Schema.Attribute.Text;
-    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    link: Schema.Attribute.String;
-    linkLabel: Schema.Attribute.String;
-    Subtitle: Schema.Attribute.String;
-    Title: Schema.Attribute.Text;
+    BlockID: Schema.Attribute.String;
+    HideBlock: Schema.Attribute.Boolean;
+    NoBottomSpace: Schema.Attribute.Boolean;
   };
 }
 
@@ -451,6 +50,8 @@ export interface ElementsImageVideoItem extends Struct.ComponentSchema {
   attributes: {
     Description: Schema.Attribute.String;
     Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    MobileImage: Schema.Attribute.Media<'images'>;
+    MobileVideoURL: Schema.Attribute.String;
     VideoUrl: Schema.Attribute.String;
   };
 }
@@ -471,7 +72,7 @@ export interface ElementsLink extends Struct.ComponentSchema {
 export interface ElementsStickyCardsItem extends Struct.ComponentSchema {
   collectionName: 'components_elements_sticky_cards_items';
   info: {
-    displayName: 'Sticky Cards Item';
+    displayName: 'Card Item';
     icon: 'bulletList';
   };
   attributes: {
@@ -524,20 +125,11 @@ export interface FooterSocialLinks extends Struct.ComponentSchema {
     icon: 'twitter';
   };
   attributes: {
-    social_icon: Schema.Attribute.Media<'images'>;
-    social_link: Schema.Attribute.String;
-  };
-}
-
-export interface GlobalCommon extends Struct.ComponentSchema {
-  collectionName: 'components_global_commons';
-  info: {
-    displayName: 'Common';
-    icon: 'bulletList';
-  };
-  attributes: {
-    BlockID: Schema.Attribute.String;
-    HideBlock: Schema.Attribute.Boolean;
+    SocialLinks: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::social-link.social-link'
+    >;
+    Title: Schema.Attribute.String;
   };
 }
 
@@ -699,43 +291,15 @@ export interface HomeHomePageConfig extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'blocks.about-banner': BlocksAboutBanner;
-      'blocks.clients': BlocksClients;
-      'blocks.contact-banner': BlocksContactBanner;
-      'blocks.contact-form-block': BlocksContactFormBlock;
-      'blocks.content-block': BlocksContentBlock;
-      'blocks.details-content': BlocksDetailsContent;
-      'blocks.full-width-image': BlocksFullWidthImage;
-      'blocks.fullscreen-animated-text': BlocksFullscreenAnimatedText;
-      'blocks.fullscreen-stiky-slider': BlocksFullscreenStikySlider;
-      'blocks.gallery': BlocksGallery;
-      'blocks.horizontal-sticky-cards': BlocksHorizontalStickyCards;
-      'blocks.image-slider': BlocksImageSlider;
-      'blocks.image-video-text-fill-on-scroll': BlocksImageVideoTextFillOnScroll;
-      'blocks.quote-block': BlocksQuoteBlock;
-      'blocks.quote-with-background': BlocksQuoteWithBackground;
-      'blocks.related-insights': BlocksRelatedInsights;
-      'blocks.simple-image-gallery': BlocksSimpleImageGallery;
-      'blocks.sticky-cards': BlocksStickyCards;
-      'blocks.team-block': BlocksTeamBlock;
+      'blocks.global-area': BlocksGlobalArea;
       'blocks.test-block': BlocksTestBlock;
-      'blocks.testimonials': BlocksTestimonials;
-      'blocks.text-plate-with-background': BlocksTextPlateWithBackground;
-      'blocks.thank-you': BlocksThankYou;
-      'blocks.two-column-content-block': BlocksTwoColumnContentBlock;
-      'blocks.video-player': BlocksVideoPlayer;
-      'elements.cookies-policy': ElementsCookiesPolicy;
-      'elements.details-content-group': ElementsDetailsContentGroup;
-      'elements.details-content-item': ElementsDetailsContentItem;
-      'elements.fullscreen-animated-text-item': ElementsFullscreenAnimatedTextItem;
-      'elements.image-title-description-item': ElementsImageTitleDescriptionItem;
+      'elements.common': ElementsCommon;
       'elements.image-video-item': ElementsImageVideoItem;
       'elements.link': ElementsLink;
       'elements.sticky-cards-item': ElementsStickyCardsItem;
       'elements.team-item': ElementsTeamItem;
       'footer.links-group': FooterLinksGroup;
       'footer.social-links': FooterSocialLinks;
-      'global.common': GlobalCommon;
       'global.config': GlobalConfig;
       'global.form-after-submission': GlobalFormAfterSubmission;
       'global.form-email-templates': GlobalFormEmailTemplates;

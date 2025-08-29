@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_global_areas",
+  "info": {
+    "displayName": "Global Area",
+    "icon": "cog"
+  },
+  "options": {},
+  "attributes": {
+    "Stacks": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::stacks-and-global-area.stacks-and-global-area"
+    },
+    "Common": {
+      "type": "component",
+      "component": "elements.common",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

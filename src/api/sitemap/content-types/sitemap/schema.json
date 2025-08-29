@@ -82,8 +82,8 @@
         }
       },
       "components": [
-        "blocks.two-column-content-block",
-        "blocks.full-width-image"
+        "blocks.test-block",
+        "blocks.global-area"
       ]
     }
   }

@@ -1,13 +1,23 @@
 {
   "collectionName": "components_blocks_test_blocks",
   "info": {
-    "displayName": "TestBlock",
-    "icon": "attachment"
+    "displayName": "Test Block",
+    "icon": "landscape"
   },
   "options": {},
   "attributes": {
     "Title": {
       "type": "string"
+    },
+    "Media": {
+      "type": "component",
+      "component": "elements.image-video-item",
+      "repeatable": false
+    },
+    "Common": {
+      "type": "component",
+      "component": "elements.common",
+      "repeatable": false
     }
   },
   "config": {}

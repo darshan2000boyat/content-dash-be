@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_elements_commons",
+  "info": {
+    "displayName": "Common",
+    "icon": "cog"
+  },
+  "options": {},
+  "attributes": {
+    "HideBlock": {
+      "type": "boolean"
+    },
+    "BlockID": {
+      "type": "string"
+    },
+    "NoBottomSpace": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

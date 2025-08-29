@@ -426,7 +426,7 @@ export interface ApiEmailConfigurationEmailConfiguration
 export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   collectionName: 'faqs';
   info: {
-    displayName: 'Faq';
+    displayName: '4.0.0 - Faq';
     pluralName: 'faqs';
     singularName: 'faq';
   };
@@ -796,7 +796,7 @@ export interface ApiSitemapSitemap extends Struct.CollectionTypeSchema {
   };
   attributes: {
     Blocks: Schema.Attribute.DynamicZone<
-      ['blocks.two-column-content-block', 'blocks.full-width-image']
+      ['blocks.test-block', 'blocks.global-area']
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -852,6 +852,87 @@ export interface ApiSitemapSitemap extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSocialLinkSocialLink extends Struct.CollectionTypeSchema {
+  collectionName: 'social_links';
+  info: {
+    displayName: '5.0.0 - Social Link';
+    pluralName: 'social-links';
+    singularName: 'social-link';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Icon: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::social-link.social-link'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    URL: Schema.Attribute.String;
+  };
+}
+
+export interface ApiStacksAndGlobalAreaStacksAndGlobalArea
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'stacks_and_global_areas';
+  info: {
+    displayName: 'Stacks and Global Area';
+    pluralName: 'stacks-and-global-areas';
+    singularName: 'stacks-and-global-area';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Blocks: Schema.Attribute.DynamicZone<['blocks.test-block']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::stacks-and-global-area.stacks-and-global-area'
+    >;
+    PageTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    PageURL: Schema.Attribute.UID<'PageTitle'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1214,6 +1295,7 @@ export interface PluginUploadFile extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     mime: Schema.Attribute.String & Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Required;
+    placeholder: Schema.Attribute.Text;
     previewUrl: Schema.Attribute.String;
     provider: Schema.Attribute.String & Schema.Attribute.Required;
     provider_metadata: Schema.Attribute.JSON;
@@ -1454,6 +1536,8 @@ declare module '@strapi/strapi' {
       'api::remote-config.remote-config': ApiRemoteConfigRemoteConfig;
       'api::route.route': ApiRouteRoute;
       'api::sitemap.sitemap': ApiSitemapSitemap;
+      'api::social-link.social-link': ApiSocialLinkSocialLink;
+      'api::stacks-and-global-area.stacks-and-global-area': ApiStacksAndGlobalAreaStacksAndGlobalArea;
       'api::translation.translation': ApiTranslationTranslation;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
