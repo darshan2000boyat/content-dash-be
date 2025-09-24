@@ -9,7 +9,8 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi",
-    "upgrade": "npx @strapi/upgrade latest"
+    "upgrade": "npx @strapi/upgrade latest",
+    "build-prod": "NODE_OPTIONS=--max-old-space-size=4096 strapi build"
   },
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^5.0.1",
