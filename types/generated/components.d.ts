@@ -20,6 +20,7 @@ export interface BlocksTestBlock extends Struct.ComponentSchema {
   info: {
     displayName: 'Test Block';
     icon: 'landscape';
+    thumbnail: '/components/test.jpg';
   };
   attributes: {
     Common: Schema.Attribute.Component<'elements.common', false>;

@@ -3,19 +3,19 @@ export default {
     entities: [
         {
             name: "api::vacancy.vacancy",
-            fields: ["PageTitle", "Description"],
+            fields: ["PageTitle"],
             title: "PageTitle",
         },
 
         {
             name: "api::project.project",
-            fields: ["PageTitle", "Description"],
+            fields: ["PageTitle"],
             title: "PageTitle",
         },
 
         {
             name: "api::project.project",
-            fields: ["PageTitle", "Description"],
+            fields: ["PageTitle"],
             title: "PageTitle",
             match_filters: {
                 ParentPages: {
@@ -27,14 +27,14 @@ export default {
 
         {
             name: "api::news-item.news-item",
-            fields: ["PageTitle", "Description"],
+            fields: ["PageTitle"],
             title: "PageTitle",
             frontend_entity: "api::news-and-events.news-and-events",
         },
 
         {
             name: "api::event.event",
-            fields: ["PageTitle", "Description"],
+            fields: ["PageTitle"],
             title: "PageTitle",
             frontend_entity: "api::news-and-events.news-and-events",
         },

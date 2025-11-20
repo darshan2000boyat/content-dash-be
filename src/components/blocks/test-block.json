@@ -1,24 +1,25 @@
 {
-  "collectionName": "components_blocks_test_blocks",
-  "info": {
-    "displayName": "Test Block",
-    "icon": "landscape"
-  },
-  "options": {},
-  "attributes": {
-    "Title": {
-      "type": "string"
+    "collectionName": "components_blocks_test_blocks",
+    "info": {
+        "displayName": "Test Block",
+        "icon": "landscape",
+        "thumbnail": "/components/test.jpg"
     },
-    "Media": {
-      "type": "component",
-      "component": "elements.image-video-item",
-      "repeatable": false
+    "options": {},
+    "attributes": {
+        "Title": {
+            "type": "string"
+        },
+        "Media": {
+            "type": "component",
+            "component": "elements.image-video-item",
+            "repeatable": false
+        },
+        "Common": {
+            "type": "component",
+            "component": "elements.common",
+            "repeatable": false
+        }
     },
-    "Common": {
-      "type": "component",
-      "component": "elements.common",
-      "repeatable": false
-    }
-  },
-  "config": {}
+    "config": {}
 }

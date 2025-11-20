@@ -1,0 +1,28 @@
+{
+    "name": "component-thumbnails",
+    "version": "1.0.0",
+    "description": "Add custom thumbnails to Strapi v5 components",
+    "license": "MIT",
+    "author": {
+        "name": "nixon1020"
+    },
+    "maintainers": [
+        {
+            "name": "nixon1020"
+        }
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+        "@strapi/strapi": "^5.0.0"
+    },
+    "engines": {
+        "node": ">=18.0.0 <=20.x.x",
+        "npm": ">=6.0.0"
+    },
+    "strapi": {
+        "name": "component-thumbnails",
+        "displayName": "Component Thumbnails",
+        "description": "Replace component icons with custom thumbnails in dynamic zones",
+        "kind": "plugin"
+    }
+}

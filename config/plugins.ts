@@ -7,13 +7,29 @@ const CF_UPLOAD_PROVIDER = "cloudflare-r2";
 
 export default ({ env }) => ({
     // ..other plugins
-    placeholder: {
-        resolve: "./src/extensions/strapi-plugin-placeholder",
-        enabled: true, //env("ENABLE_PLACEHOLDER", false),
+    // placeholder: {
+    //     resolve: "./src/extensions/strapi-plugin-placeholder",
+    //     enabled: true, //env("ENABLE_PLACEHOLDER", false),
+    //     config: {
+    //         size: 10,
+    //     },
+    //     name: "placeholder",
+    // },
+    "component-thumbnails": {
+        enabled: true,
+        resolve: "./src/plugins/component-thumbnails",
+    },
+    "webp-converter": {
+        enabled: true,
         config: {
-            size: 10,
+            // mimeTypes that converts to WebP. Default is ['image/png', 'image/jpeg', 'image/jpg']
+            // mimeTypes: undefined,
+            options: {
+                // WebP options: https://sharp.pixelplumbing.com/api-output#webp
+                nearLossless: true,
+                quality: 80,
+            },
         },
-        name: "placeholder",
     },
     upload: getUploadProviderConfig(env),
     email: getEmailProviderConfig(env),
@@ -48,6 +64,13 @@ export default ({ env }) => ({
 const getBaseUploadConfig = () => ({
     config: {
         provider: LOCAL_UPLOAD_PROVIDER,
+        breakpoints: {
+            large: 2500,
+            medium: 1920,
+            small: 1440,
+            xsmall: 991,
+            placeholder: 5,
+        },
     },
 });
 
@@ -114,6 +137,7 @@ const getUploadProviderConfig = (env) => {
                         medium: 1920,
                         small: 1440,
                         xsmall: 991,
+                        placeholder: 5,
                     },
                     provider: CF_UPLOAD_PROVIDER,
                     providerOptions: getCFProviderOptions(env),
