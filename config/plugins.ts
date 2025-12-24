@@ -3,18 +3,19 @@ const AWS_S3_UPLOAD_PROVIDER = "aws-s3";
 const SENDMAIL_EMAIL_PROVIDER = "sendmail";
 const NODEMAILER_EMAIL_PROVIDER = "nodemailer";
 const SENDGRID_EMAIL_PROVIDER = "sendgrid";
+const AZURE_EMAIL_PROVIDER = "azure";
 const CF_UPLOAD_PROVIDER = "cloudflare-r2";
 
 export default ({ env }) => ({
   // ..other plugins
   upload: getUploadProviderConfig(env),
-  email: getEmailProviderConfig(env),  
+  email: getEmailProviderConfig(env),
   "schema-visualizer": {
-    enabled: true,
+    enabled: false,
   },
-  "strapi-plugin-dashboard": {
-    enabled: true,
-  },
+  // "strapi-plugin-dashboard": {
+  //   enabled: false,
+  // },
   "users-permissions": {
     config: {
       jwt: {
@@ -143,6 +144,9 @@ const getEmailProviderConfig = (env) => {
   } else if (env("EMAIL_PROVIDER") === SENDGRID_EMAIL_PROVIDER) {
     config.config.provider = SENDGRID_EMAIL_PROVIDER;
     config.config.providerOptions = { apiKey: env("SENDGRID_API_KEY") };
+  } else if (env("EMAIL_PROVIDER") === AZURE_EMAIL_PROVIDER) {
+    config.config.provider = "strapi-provider-email-azure";
+    config.config.providerOptions = { endpoint: env("AZURE_ENDPOINT") };
   }
 
   config.config.settings = {
