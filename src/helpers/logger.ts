@@ -1,6 +1,7 @@
 import simpleLogger from "simple-node-logger";
 import fs from "fs";
-const dir = "public/logs/strapi/";
+const currentYear = new Date().getFullYear();
+const dir = `public/logs/strapi_${currentYear}/`;
 const logger = simpleLogger.createRollingFileLogger({
   logDirectory: dir,
   fileNamePattern: "strapi_log_<DATE>.log",
