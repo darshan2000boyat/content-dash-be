@@ -807,7 +807,6 @@ export interface ApiSitemapSitemap extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     ExcludeFromSitemap: Schema.Attribute.Boolean &
-      Schema.Attribute.Private &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
