@@ -134,43 +134,6 @@ export interface FooterSocialLinks extends Struct.ComponentSchema {
   };
 }
 
-export interface FormDependency extends Struct.ComponentSchema {
-  collectionName: 'components_form_dependencies';
-  info: {
-    displayName: 'Dependency';
-    icon: 'connector';
-  };
-  attributes: {
-    action: Schema.Attribute.Enumeration<['show', 'hide']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'show'>;
-    form_field: Schema.Attribute.Relation<
-      'oneToOne',
-      'plugin::strapi-formidable.form-field'
-    >;
-    value: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
-export interface FormOptions extends Struct.ComponentSchema {
-  collectionName: 'components_form_options';
-  info: {
-    displayName: 'Options';
-    icon: 'bulletList';
-  };
-  attributes: {
-    form_emails: Schema.Attribute.Relation<
-      'oneToMany',
-      'plugin::strapi-formidable.form-email'
-    >;
-    is_default: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
-    label: Schema.Attribute.String & Schema.Attribute.Required;
-    value: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
 export interface GlobalConfig extends Struct.ComponentSchema {
   collectionName: 'components_global_configs';
   info: {
@@ -338,8 +301,6 @@ declare module '@strapi/strapi' {
       'elements.team-item': ElementsTeamItem;
       'footer.links-group': FooterLinksGroup;
       'footer.social-links': FooterSocialLinks;
-      'form.dependency': FormDependency;
-      'form.options': FormOptions;
       'global.config': GlobalConfig;
       'global.form-after-submission': GlobalFormAfterSubmission;
       'global.form-email-templates': GlobalFormEmailTemplates;

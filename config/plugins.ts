@@ -34,9 +34,6 @@ export default ({ env }) => ({
     },
     upload: getUploadProviderConfig(env),
     email: getEmailProviderConfig(env),
-    "schema-visualizer": {
-        enabled: true,
-    },
     "users-permissions": {
         config: {
             jwt: {

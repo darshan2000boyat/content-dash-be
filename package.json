@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^5.0.1",
-    "@npm_tentwenty/strapi-formidable": "^0.0.0",
     "@redon2inc/strapi-plugin-refresh-token": "^0.1.4",
     "@strapi/plugin-cloud": "5.36.1",
     "@strapi/plugin-color-picker": "^5.36.1",
@@ -30,10 +29,8 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "simple-node-logger": "^21.8.12",
-    "strapi-plugin-dashboard": "^1.0.2",
     "strapi-plugin-multi-select": "^2.1.1",
     "strapi-plugin-navigation": "^3.2.4",
-    "strapi-plugin-schema-visualizer": "^1.0.5",
     "strapi-plugin-webp-converter": "^1.0.4",
     "strapi-provider-email-azure": "^1.0.4",
     "strapi-v5-search-multilingual": "^1.0.9",
