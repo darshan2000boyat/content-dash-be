@@ -6,15 +6,13 @@
   },
   "options": {},
   "attributes": {
-    "social_link": {
+    "Title": {
       "type": "string"
     },
-    "social_icon": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
+    "SocialLinks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::social-link.social-link"
     }
   },
   "config": {}

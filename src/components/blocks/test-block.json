@@ -1,14 +1,25 @@
 {
-  "collectionName": "components_blocks_test_blocks",
-  "info": {
-    "displayName": "TestBlock",
-    "icon": "attachment"
-  },
-  "options": {},
-  "attributes": {
-    "Title": {
-      "type": "string"
-    }
-  },
-  "config": {}
+    "collectionName": "components_blocks_test_blocks",
+    "info": {
+        "displayName": "Test Block",
+        "icon": "landscape",
+        "thumbnail": "/components/test.jpg"
+    },
+    "options": {},
+    "attributes": {
+        "Title": {
+            "type": "string"
+        },
+        "Media": {
+            "type": "component",
+            "component": "elements.image-video-item",
+            "repeatable": false
+        },
+        "Common": {
+            "type": "component",
+            "component": "elements.common",
+            "repeatable": false
+        }
+    },
+    "config": {}
 }

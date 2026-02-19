@@ -21,6 +21,16 @@
     },
     "Description": {
       "type": "string"
+    },
+    "MobileImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "MobileVideoURL": {
+      "type": "string"
     }
   },
   "config": {}

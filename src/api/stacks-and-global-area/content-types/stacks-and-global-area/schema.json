@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "faqs",
+  "collectionName": "stacks_and_global_areas",
   "info": {
-    "singularName": "faq",
-    "pluralName": "faqs",
-    "displayName": "4.0.0 - Faq"
+    "singularName": "stacks-and-global-area",
+    "pluralName": "stacks-and-global-areas",
+    "displayName": "Stacks and Global Area"
   },
   "options": {
     "draftAndPublish": true
@@ -30,27 +30,19 @@
           "localized": true
         }
       },
-      "targetField": "PageTitle"
+      "targetField": "PageTitle",
+      "required": true
     },
-    "Content": {
-      "type": "customField",
+    "Blocks": {
+      "type": "dynamiczone",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "customField": "plugin::ckeditor5.CKEditor",
-      "options": {
-        "preset": "defaultHtml"
-      }
-    },
-    "SortOrder": {
-      "type": "integer",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      "components": [
+        "blocks.test-block"
+      ]
     }
   }
 }
