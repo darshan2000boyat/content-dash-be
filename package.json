@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^5.0.1",
+    "@breezertwo/strapi-plugin-drag-drop-content-types": "^5.4.0",
     "@npm_tentwenty/strapi-formidable": "^0.0.0",
     "@redon2inc/strapi-plugin-refresh-token": "^0.1.4",
     "@strapi/plugin-cloud": "5.36.1",

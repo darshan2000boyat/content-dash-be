@@ -16,6 +16,9 @@ export default ({ env }) => ({
     //     },
     //     name: "placeholder",
     // },
+    'drag-drop-content-types': {
+        enabled: true,
+    },
     "component-thumbnails": {
         enabled: true,
         resolve: "./src/plugins/component-thumbnails",
