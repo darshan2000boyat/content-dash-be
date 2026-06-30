@@ -440,6 +440,54 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDashboardProjectDashboardProject
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'dashboard_projects';
+  info: {
+    description: 'Dashboard project with id + password auth';
+    displayName: 'Dashboard Project';
+    pluralName: 'dashboard-projects';
+    singularName: 'dashboard-project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    accessToken: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    frontendUrl: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dashboard-project.dashboard-project'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
+    passwordHash: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    projectId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 32;
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    strapiHost: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEmailConfigurationEmailConfiguration
   extends Struct.SingleTypeSchema {
   collectionName: 'email_configurations';
@@ -2017,6 +2065,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::dashboard-project.dashboard-project': ApiDashboardProjectDashboardProject;
       'api::email-configuration.email-configuration': ApiEmailConfigurationEmailConfiguration;
       'api::faq.faq': ApiFaqFaq;
       'api::news-item.news-item': ApiNewsItemNewsItem;

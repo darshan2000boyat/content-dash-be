@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dashboard_projects",
+  "info": {
+    "singularName": "dashboard-project",
+    "pluralName": "dashboard-projects",
+    "displayName": "Dashboard Project",
+    "description": "Dashboard project with id + password auth"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 120
+    },
+    "projectId": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 32
+    },
+    "passwordHash": {
+      "type": "string",
+      "required": true,
+      "private": true
+    },
+    "strapiHost": {
+      "type": "string",
+      "required": true
+    },
+    "accessToken": {
+      "type": "text",
+      "required": true,
+      "private": true
+    },
+    "frontendUrl": {
+      "type": "string"
+    }
+  }
+}
