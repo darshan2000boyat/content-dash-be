@@ -39,6 +39,20 @@
     },
     "frontendUrl": {
       "type": "string"
+    },
+    "leadPasswordHash": {
+      "type": "string",
+      "private": true
+    },
+    "slackWebhookUrl": {
+      "type": "string",
+      "private": true
+    },
+    "submissions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::content-submission.content-submission",
+      "mappedBy": "project"
     }
   }
 }

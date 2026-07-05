@@ -1,0 +1,16 @@
+{
+    "name": "content-review",
+    "version": "1.0.0",
+    "description": "Review dashboard for staged content submissions — verify diffs and publish to each project's live CMS",
+    "license": "MIT",
+    "dependencies": {},
+    "peerDependencies": {
+        "@strapi/strapi": "^5.0.0"
+    },
+    "strapi": {
+        "name": "content-review",
+        "displayName": "Content Review",
+        "description": "Projects and their staged content submissions with visual diff, publish and reject",
+        "kind": "plugin"
+    }
+}

@@ -23,6 +23,10 @@ export default ({ env }) => ({
         enabled: true,
         resolve: "./src/plugins/component-thumbnails",
     },
+    "content-review": {
+        enabled: true,
+        resolve: "./src/plugins/content-review",
+    },
     "webp-converter": {
         enabled: true,
         config: {

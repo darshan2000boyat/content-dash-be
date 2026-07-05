@@ -440,6 +440,68 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiContentSubmissionContentSubmission
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'content_submissions';
+  info: {
+    description: "Staged page edits awaiting team-lead review before publish to the project's target CMS";
+    displayName: 'Content Submission';
+    pluralName: 'content-submissions';
+    singularName: 'content-submission';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    blocks: Schema.Attribute.JSON & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::content-submission.content-submission'
+    > &
+      Schema.Attribute.Private;
+    pageDocumentId: Schema.Attribute.String & Schema.Attribute.Required;
+    pageTitle: Schema.Attribute.String;
+    pageUrl: Schema.Attribute.String;
+    previousBlocks: Schema.Attribute.JSON;
+    previousSeo: Schema.Attribute.JSON;
+    project: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::dashboard-project.dashboard-project'
+    >;
+    projectId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 32;
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    publishedToTargetAt: Schema.Attribute.DateTime;
+    publishError: Schema.Attribute.Text;
+    reviewedAt: Schema.Attribute.DateTime;
+    reviewedBy: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
+    reviewNote: Schema.Attribute.Text;
+    seo: Schema.Attribute.JSON;
+    submissionStatus: Schema.Attribute.Enumeration<
+      ['pending', 'published', 'rejected']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'pending'>;
+    submittedBy: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiDashboardProjectDashboardProject
   extends Struct.CollectionTypeSchema {
   collectionName: 'dashboard_projects';
@@ -460,6 +522,7 @@ export interface ApiDashboardProjectDashboardProject
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     frontendUrl: Schema.Attribute.String;
+    leadPasswordHash: Schema.Attribute.String & Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -481,7 +544,12 @@ export interface ApiDashboardProjectDashboardProject
         maxLength: 32;
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    slackWebhookUrl: Schema.Attribute.String & Schema.Attribute.Private;
     strapiHost: Schema.Attribute.String & Schema.Attribute.Required;
+    submissions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::content-submission.content-submission'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -2065,6 +2133,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::content-submission.content-submission': ApiContentSubmissionContentSubmission;
       'api::dashboard-project.dashboard-project': ApiDashboardProjectDashboardProject;
       'api::email-configuration.email-configuration': ApiEmailConfigurationEmailConfiguration;
       'api::faq.faq': ApiFaqFaq;

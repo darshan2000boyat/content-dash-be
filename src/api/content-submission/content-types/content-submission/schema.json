@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "content_submissions",
+  "info": {
+    "singularName": "content-submission",
+    "pluralName": "content-submissions",
+    "displayName": "Content Submission",
+    "description": "Staged page edits awaiting team-lead review before publish to the project's target CMS"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "project": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::dashboard-project.dashboard-project"
+    },
+    "projectId": {
+      "type": "string",
+      "required": true,
+      "maxLength": 32
+    },
+    "pageDocumentId": {
+      "type": "string",
+      "required": true
+    },
+    "pageTitle": {
+      "type": "string"
+    },
+    "pageUrl": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "blocks": {
+      "type": "json",
+      "required": true
+    },
+    "seo": {
+      "type": "json"
+    },
+    "previousBlocks": {
+      "type": "json"
+    },
+    "previousSeo": {
+      "type": "json"
+    },
+    "submissionStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "published", "rejected"],
+      "default": "pending",
+      "required": true
+    },
+    "submittedBy": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "reviewedBy": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "reviewedAt": {
+      "type": "datetime"
+    },
+    "reviewNote": {
+      "type": "text"
+    },
+    "publishedToTargetAt": {
+      "type": "datetime"
+    },
+    "publishError": {
+      "type": "text"
+    }
+  }
+}
